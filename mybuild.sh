@@ -100,14 +100,17 @@ init_workspace() {
 # built files.
 # ------------------------------------------------------------------------------
 build_source() {
-	log "[ ${FUNCNAME} ] (1/2) Prepare start scripts"
-	exec_err cp -r "${SCRIPT_PATH}/src/init.d/." "${WORKSPACE_QPKG_ROOT}/shared"
+	log "[ ${FUNCNAME} ] (1/3) Prepare start scripts"
+	#exec_err cp -r "${SCRIPT_PATH}/src/init.d/." "${WORKSPACE_QPKG_ROOT}/shared"
+	exec_err cp -r "${SCRIPT_PATH}/src/x86_64/."  "${WORKSPACE_QPKG_ROOT}/${CPU_ARCH}"
 
-	log "[ ${FUNCNAME} ] (2/2) Prepare asset"
+	log "[ ${FUNCNAME} ] (2/3) Prepare asset"
 	exec_err cp -r "${SCRIPT_PATH}/src/asset/." "${WORKSPACE_QPKG_ROOT}/"
 
-	log_warn "[ ${FUNCNAME} ] Add your own script [ HERE ]"
-	# --------------------------------------------------------------------------
+	log "[ ${FUNCNAME} ] (3/3) Prepare shared"
+	exec_err cp -r "${SCRIPT_PATH}/src/shared/." "${WORKSPACE_QPKG_ROOT}/shared/"
+
+	log_warn "[ ${FUNCNAME} ] Add your own script [ HERE ]"	# --------------------------------------------------------------------------
 	# [HERE] You will add the scrpit that builds your source code and places the
   	# program at right place. 
 	#
