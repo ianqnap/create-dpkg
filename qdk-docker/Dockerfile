@@ -5,9 +5,12 @@ WORKDIR /root/QDK
 RUN ./InstallToUbuntu.sh install && \
 	apt update && \
 	apt install -y rsync && \
+        apt install -y git && \
 	apt-get remove --purge -yq && \
     apt-get autoclean -y && \
     apt-get autoremove -y && \
+    mkdir -p /go/src/github.com/qeek-dev && \
+    rm -f /root/QDK/shared/template/shared/init.sh && \
     rm -rf /var/lib/{cache,log}/ && \
     rm -rf /var/lib/apt/lists/*.lz4 && \
     rm -rf /tmp/* /var/tmp/* && \
